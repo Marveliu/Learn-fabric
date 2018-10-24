@@ -98,6 +98,7 @@ services:
       file:   base/docker-compose-base.yaml
       service: orderer.example.com
     container_name: orderer.example.com
+    restart: always
     depends_on:
       - zookeeper0
       - zookeeper1

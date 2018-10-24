@@ -77,7 +77,6 @@ Build the binaries
 ^^^^^^^^^^^^^^^^^^
 
 -  Now make the platform-specific binaries for ``cryptogen`` and ``configtxgen``.
-
 .. code:: bash
 
        cd $GOPATH/src/github.com/hyperledger/fabric
@@ -138,11 +137,12 @@ topology and allows us to generate a library of certificates for both the
 Organizations and the components that belong to those Organizations.  Each
 Organization is provisioned a unique root certificate (``ca-cert``), that binds
 specific components (peers and orderers) to that Org.  Transactions and communications
-within Fabric are signed by an entity's private key (``keystore``), and then verified
-by means of a public key (``signcerts``).  You will notice a "count" variable within
+within Fabric are signed by an entity's private key (``keystore``),[私钥] and then verified
+by means of a public key (``signcerts``)[公钥].  You will notice a "count" variable within
 this file.  We use this to specify the number of peers per Organization; in our
 case it's two peers per Org.  The rest of this template is extremely
 self-explanatory.
+
 
 After we run the tool, the certs will be parked in a folder titled ``crypto-config``.
 
