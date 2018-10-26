@@ -51,11 +51,13 @@ function removeUnwantedImages() {
         fi
 }
 
+#启动网络
 function networkUp () {
+	# 判断是否存在该文件
     if [ -d "./crypto-config" ]; then
       echo "crypto-config directory already exists."
     else
-      #Generate all the artifacts that includes org certs, orderer genesis block,
+      # Generate all the artifacts that includes org certs, orderer genesis block,
       # channel configuration transaction
       source generateArtifacts.sh $CH_NAME
     fi

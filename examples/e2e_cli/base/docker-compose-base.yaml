@@ -6,6 +6,8 @@
 version: '2'
 
 services:
+
+  # zookeeper节点
   zookeeper:
     image: hyperledger/fabric-zookeeper
     restart: always
@@ -14,6 +16,7 @@ services:
       - '2888'
       - '3888'
 
+  # kafka节点
   kafka:
     image: hyperledger/fabric-kafka
     restart: always
@@ -24,10 +27,13 @@ services:
     ports:
       - '9092'
 
+  # 共识节点
   orderer.example.com:
     container_name: orderer.example.com
     image: hyperledger/fabric-orderer
+    restart: always
     environment:
+      # 指明创世区块，以及MSP
       - ORDERER_GENERAL_LOGLEVEL=debug
       - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
       - ORDERER_GENERAL_GENESISMETHOD=file
@@ -51,6 +57,7 @@ services:
     ports:
       - 7050:7050
 
+  # 节点的定义，挂载了不同的msp和tls
   peer0.org1.example.com:
     container_name: peer0.org1.example.com
     extends:
